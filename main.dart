@@ -1,169 +1,344 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
-
   @override
   Widget build(BuildContext context) {
-    const String appTitle = 
-    'Flutter layout demo';
     return MaterialApp(
-      title: appTitle,
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            appTitle,
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-            ),
-          ),
-          centerTitle: true,
-        ),
-        body: const SingleChildScrollView(
-          child: Column(
-            children: [
-              ImageSection(
-                image: 'assets/images/everest.jpg'
-              ),
-              TitleSection(
-                name: 'Mount Everest',
-                location: 'The World Highest Peak',
-              ),
-              ButtonSection(),
-              TextSection(
-                description:
-                    'Mount Everest, the highest peak in the world with a height of 8,848 meters above sea level, '
-                    'stands majestically on the border between Nepal and Tibet '
-                    'This mountain is part of the Himalayan Mountains and has become a global icon for climbers and nature lovers. '
-                    'The name Everest is taken from Sir George Everest, a British geographer, but in Nepali, this mountain is known as Sagarmatha, '
-                    'which means "Heavenly Forehead", and in Tibetan it is called Chomolungma, "Holy Mother of the Universe". '
-                    'The history of the conquest of Mount Everest began in 1953 when Sir Edmund Hillary from New Zealand and Tenzing Norgay, '
-                    'a Sherpa guide from Nepal, managed to reach the peak. '
-                    'Their achievements were a historic milestone in the world of climbing and inspired many climbers from all over the world to follow in their footsteps. ',
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TitleSection extends StatelessWidget {
-  const TitleSection({
-    super.key,
-    required this.name,
-    required this.location,
-  });
-
-  final String name;
-  final String location;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Row(
-        children: [
-          Expanded(
-            /*1*/
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: const SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                /*2*/
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
+                const SizedBox(
+                  height: 35.0,
                 ),
-                Text(
-                  location,
+                ButtonAtas(),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                const Text(
+                  'Chats',
                   style: TextStyle(
-                    color: Colors.grey[500],
+                    fontFamily: 'Outfit',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 35.0,
                   ),
+                  textAlign: TextAlign.start,
+                ),
+                const SizedBox(
+                  height: 12.0,
+                ),
+                Pencarian(),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                RowAll(),
+                Chat(
+                  name: 'Iqbal',
+                  chat: 'Acara tanggal 21',
+                  jam: '20.00',
+                  color: Colors.green,
+                  nomor: '1',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Ayam',
+                  chat: 'nyeleh satus',
+                  jam: '18.00',
+                  color: Colors.green,
+                  nomor: '4',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Alip',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '2',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Samid',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '100',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Uyab',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '3',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Andre',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '90',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Dudutexx',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '6',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Arzy',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '70',
+                ),
+                 const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Ucup',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '20',
+                ), const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
+                ),
+                Chat(
+                  name: 'Abdil',
+                  chat: 'p',
+                  jam: 'Kemarin',
+                  color: Colors.green,
+                  nomor: '1',
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                const Divider(
+                  color: Colors.black12,
                 ),
               ],
             ),
           ),
-          /*3*/
-          Icon(
-            Icons.star,
-            color: Colors.red[500],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.grey,
+        backgroundColor: Colors.grey.shade200,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.circle_outlined),
+            label: 'Update',
           ),
-          const Text('2,1M'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.call_end_outlined),
+            label: 'Calls',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.groups_outlined),
+            label: 'Communities',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Chats',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
         ],
+      ),
       ),
     );
   }
 }
 
-class ButtonSection extends StatelessWidget {
-  const ButtonSection({super.key});
-
-    @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ButtonWithText(
-            color: Colors.black,
-            icon: Icons.call,
-            label: 'CALL',
-          ),
-          ButtonWithText(
-            color: Colors.black,
-            icon: Icons.near_me,
-            label: 'ROUTE',
-          ),
-          ButtonWithText(
-            color: Colors.black,
-            icon: Icons.share,
-            label: 'SHARE',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-
-class ButtonWithText extends StatelessWidget {
-  const ButtonWithText({
-    super.key,
-    required this.color,
-    required this.icon,
-    required this.label,
-  });
-
-  final Color color;
-  final IconData icon;
-  final String label;
+class ButtonAtas extends StatelessWidget {
+  const ButtonAtas({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Icon(icon, color: color),
-        Padding(
-          padding: const EdgeInsets.only(top: 8),
-          child: Text(
-            label,
+        CircleAvatar(
+          radius: 11.0,
+          backgroundColor: Colors.black12,
+          child: Icon(
+            Icons.more_horiz,
+            size: 17.0,
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(width: 305.0,),
+        CircleAvatar(
+          radius: 11.0,
+          backgroundColor: Colors.black12,
+          child: Icon(
+            Icons.camera_alt,
+            size: 15.0,
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(width: 10.0,),
+        CircleAvatar(
+          radius: 13.0,
+          backgroundColor: Colors.green,
+          child: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class Pencarian extends StatelessWidget {
+  const Pencarian({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search',
+          hintStyle: const TextStyle(
+            color: Colors.black45,
+            fontSize: 15,
+          ),
+          prefixIcon: Icon(
+            Icons.search,
+            color: Colors.black45,
+          ),
+          border: InputBorder.none,
+          filled: true,
+          fillColor: Colors.brown.shade50,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(width: 1.0, color: Colors.blue),
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RowAll extends StatelessWidget {
+  const RowAll({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+              backgroundColor: Colors.green.shade100,
+               minimumSize: Size(45.0, 15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0), // Radius tombol
+              )),
+          child: const Text(
+            'All',
             style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              color: color,
+              color: Colors.green,
+              fontSize: 13.0,
+            ),
+          ),
+        ),
+        const SizedBox(width: 6.0,),
+        TextButton(
+          onPressed: () {},
+           style: TextButton.styleFrom(
+              backgroundColor: Colors.black12,
+              minimumSize: Size(45.0, 15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(33.0), // Radius tombol
+              )),
+          child: const Text(
+            'Unread',
+            style: TextStyle(
+              color: Colors.black45,
+              fontSize: 12.0,
+            ),
+          ),
+        ),
+        const SizedBox(width: 6.0,),
+        TextButton(
+          onPressed: () {},
+           style: TextButton.styleFrom(
+              backgroundColor: Colors.black12,
+               minimumSize: Size(45.0, 15.0),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(33.0), // Radius tombol
+              )),
+          child: const Text(
+            'Groups',
+            style: TextStyle(
+              color: Colors.black45,
+              fontSize: 12.0,
             ),
           ),
         ),
@@ -172,39 +347,84 @@ class ButtonWithText extends StatelessWidget {
   }
 }
 
-class TextSection extends StatelessWidget {
-  const TextSection({
+class Chat extends StatelessWidget {
+  const Chat({
     super.key,
-    required this.description,
+    required this.nomor,
+    required this.color,
+    required this.name,
+    required this.chat,
+    required this.jam,
   });
 
-  final String description;
+  final String nomor;
+  final Color color;
+  final String name;
+  final String chat;
+  final String jam;
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Text(
-        description,
-        softWrap: true,
-        textAlign: TextAlign.justify,
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        CircleAvatar(
+          backgroundImage: AssetImage(
+            'images/ppkosong.webp',
+          ),
+          radius: 25.0,
+        ),
+        const SizedBox(
+          width: 5.0,
+        ),
+        Expanded(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 15.0,
+              ),
+            ),
+            Text(
+              chat,
+              style: TextStyle(
+                color: Colors.black45,
+              ),
+              // textAlign: TextAlign.justify,
+            )
+          ],
+        )),
+        Expanded(
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          Text(
+            jam,
+            style: TextStyle(
+              color: color,
+              fontSize: 12.0,
+            ),
+          ),
+          const SizedBox(
+            height: 5.0,
+          ),
+          CircleAvatar(
+            radius: 10.0,
+            backgroundColor: Colors.green,
+            child: Text(
+              nomor,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 10.0,
+              ),
+            ),
+          )
+        ])),
+      ],
     );
   }
 }
 
-class ImageSection extends StatelessWidget {
-  const ImageSection({super.key, required this.image});
 
-  final String image;
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      image,
-      width: 600,
-      height: 240,
-      fit: BoxFit.cover,
-    );
-  }
-}
